@@ -40,7 +40,12 @@ jobs:
         with:
           path: ~./npm
           key: npm-${{ hashFiles('**/package-lock.json') }}
-      - run: npm ci
-        name: Install modules from npm
-      - run: npm test
-        name: Run the tests
+      - name: Install modules from npm
+        run: npm ci
+      - name: Run the tests, and generate code coverage
+        run: npm test --coverage
+      - name: Upload code coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: coverage #whatever coverage output, if it's the build output then likely in dist file

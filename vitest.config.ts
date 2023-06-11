@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { defineConfig, defaultExclude } from 'vitest/config';
+import { defaultExclude, defineConfig } from 'vitest/config';
 import configuration from './vite.config';
 
 export default defineConfig({
@@ -19,7 +19,7 @@ export default defineConfig({
       ['**/*.component.test.ts', 'jsdom'],
     ],
     coverage: {
-      statements: 54.92,
+      statements: 59.79,
       thresholdAutoUpdate: true,
       include: ['src/**/*'],
       exclude: [
@@ -32,6 +32,7 @@ export default defineConfig({
         '**/*.solution.tsx',
         '**/coverage/**',
       ],
+      //Even if it has no use; no import in this project, I'm going to report this anyway 
       all: true,
     },
   },
